@@ -1,5 +1,8 @@
 package ca.ualberta.cs.lonelytwitter;
 
+import android.os.Bundle;
+
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -46,4 +49,8 @@ public abstract class Tweet {
     public void setDate(Date date) {
         this.date = date;
     }
+
+    HappyMood newMood1 = new HappyMood();
+    SadMood newMood2 = new SadMood();
+
 }
