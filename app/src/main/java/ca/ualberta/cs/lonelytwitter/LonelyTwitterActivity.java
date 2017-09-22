@@ -23,6 +23,11 @@ import android.widget.EditText;
 import android.widget.ListView;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonPrimitive;
+import com.google.gson.JsonSerializationContext;
+import com.google.gson.JsonSerializer;
 import com.google.gson.reflect.TypeToken;
 
 public class LonelyTwitterActivity extends Activity {
@@ -113,6 +118,14 @@ public class LonelyTwitterActivity extends Activity {
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			throw new RuntimeException();
+		}
+	}
+
+	public static class Serializer implements JsonSerializer<Tweet> {
+		public JsonElement serialize(Tweet tweet, Type typeOfSrc, JsonSerializationContext context) {
+			JsonObject result = new JsonObject();
+			result.add("tweet", new JsonPrimitive(tweet.getMessage()));
+			return result;
 		}
 	}
 }
