@@ -1,3 +1,16 @@
+
+/*
+ * LonelyTwitterActivity
+ *
+ * Version: 1.0
+ *
+ * September 26, 2017
+ *
+ * Copyright 2017 Team x. CMPUT 301. University of Alberta. All Rights Reserved.
+ * You may use, distribute, or modify this code under terms and conditions of he Code of Student Behavior t University of Alberta.
+ * You may find a copy of the license in this project. Otherwise please contact contact@abc.ca.
+ */
+
 package ca.ualberta.cs.lonelytwitter;
 
 import java.io.BufferedReader;
@@ -30,6 +43,15 @@ import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
 import com.google.gson.reflect.TypeToken;
 
+/**
+ * Represent a Lonely Twitter Activity
+ *
+ * @author mingwei
+ * @version 1.5
+ * @see Activity
+ * @since 1.0
+ */
+
 public class LonelyTwitterActivity extends Activity {
 
 	private static final String FILENAME = "file.sav";
@@ -38,8 +60,13 @@ public class LonelyTwitterActivity extends Activity {
 
 	private ArrayList<Tweet> tweetList;
 	private ArrayAdapter<Tweet> adapter;
-	
+
 	/** Called when the activity is first created. */
+    /**
+     * Create an activity
+     *
+     * @param savedInstanceState saved status from last activity
+     */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -68,6 +95,9 @@ public class LonelyTwitterActivity extends Activity {
 		});
 	}
 
+    /**
+     * Start the activity
+     */
 	@Override
 	protected void onStart() {
 		// TODO Auto-generated method stub
@@ -78,6 +108,9 @@ public class LonelyTwitterActivity extends Activity {
 		oldTweetsList.setAdapter(adapter);
 	}
 
+    /**
+     * Load tweet information from Gson file
+     */
 	private void loadFromFile() {
 		try {
 			FileInputStream fis = openFileInput(FILENAME);
@@ -99,7 +132,10 @@ public class LonelyTwitterActivity extends Activity {
 		}
 
 	}
-	
+
+    /**
+     * Save tweet information in Gson file
+     */
 	private void saveInFile() {
 		try {
 			FileOutputStream fos = openFileOutput(FILENAME,
@@ -121,6 +157,9 @@ public class LonelyTwitterActivity extends Activity {
 		}
 	}
 
+    /**
+     * Serialize tweet to the format of Gson file
+     */
 	public static class Serializer implements JsonSerializer<Tweet> {
 		public JsonElement serialize(Tweet tweet, Type typeOfSrc, JsonSerializationContext context) {
 			JsonObject result = new JsonObject();
