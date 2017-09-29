@@ -49,7 +49,7 @@ public class ImportantTweet extends Tweet implements Tweetable {
     /**
      * Mark importance of tweet as TRUE
      *
-     * @return
+     * @return return TRUE
      */
     @Override
     public Boolean isImportant(){

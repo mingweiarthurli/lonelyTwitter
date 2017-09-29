@@ -53,9 +53,9 @@ public abstract class Tweet {
     }
 
     /**
-     * Set this tweet as an important tweet or normal tweet
+     * Query importance of tweet
      *
-     * @return
+     * @return TRUE or FALSE
      */
     public abstract Boolean isImportant();
 
@@ -64,7 +64,7 @@ public abstract class Tweet {
      * Set tweet message
      *
      * @param message tweet message
-     * @throws TweetTooLongException
+     * @throws TweetTooLongException throw exception if message length greater than 140 words
      */
     public void setMessage(String message) throws TweetTooLongException{
         if (message.length() > 140){
@@ -77,7 +77,7 @@ public abstract class Tweet {
     /**
      * Get tweet message
      *
-     * @return
+     * @return return tweet message
      */
     public String getMessage(){
         return this.message;
@@ -86,7 +86,7 @@ public abstract class Tweet {
     /**
      * Get date of tweet
      *
-     * @return
+     * @return return tweet date
      */
     public Date getDate() {
         return date;
@@ -95,15 +95,16 @@ public abstract class Tweet {
     /**
      * Set date of tweet
      *
-     * @param date
+     * @param date inputted date
      */
     public void setDate(Date date) {
         this.date = date;
     }
 
     /**
-     * Combine date and message of tweet and return a String
-     * @return
+     * Combine date and message of tweet
+     *
+     * @return return combined String
      */
     @Override
     public String toString() {

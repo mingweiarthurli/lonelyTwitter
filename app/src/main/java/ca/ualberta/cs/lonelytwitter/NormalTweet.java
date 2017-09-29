@@ -47,9 +47,9 @@ public class NormalTweet extends Tweet {
     }
 
     /**
-     * Mark importance of tweet as FALSE
+     * Mark importance of tweet
      *
-     * @return
+     * @return return FALSE
      */
     @Override
     public Boolean isImportant(){

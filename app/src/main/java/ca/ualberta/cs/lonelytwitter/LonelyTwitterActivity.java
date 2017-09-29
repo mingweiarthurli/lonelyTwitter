@@ -48,7 +48,6 @@ import com.google.gson.reflect.TypeToken;
  *
  * @author mingwei
  * @version 1.5
- * @see Activity
  * @since 1.0
  */
 
