@@ -53,10 +53,9 @@ public class LonelyTwitterActivity extends Activity {
 				String text = bodyText.getText().toString();
 				NormalTweet newTweet = new NormalTweet(text);
 				tweetList.add(newTweet);
-				adapter.notifyDataSetChanged();
+				//adapter.notifyDataSetChanged();
 				//saveInFile(); // TODO replace this with elastic search
 				ElasticsearchTweetController.AddTweetsTask addTweetsTask = new ElasticsearchTweetController.AddTweetsTask();
-				addTweetsTask.execute(newTweet);
 			}
 		});
 
@@ -65,11 +64,25 @@ public class LonelyTwitterActivity extends Activity {
 			public void onClick(View v) {
 				setResult(RESULT_OK);
 				String text = bodyText.getText().toString();
-				//ElasticsearchTweetController.GetTweetsTask getTweetsTask = new ElasticsearchTweetController.GetTweetsTask();
-				//getTweetsTask.execute(text);
-				tweetList.clear();
-				deleteFile(FILENAME);  // TODO deprecate this button
-				adapter.notifyDataSetChanged();
+				String query = "{\n" +
+									"	\"query\": {\n" +
+									"		\"term\": {\"message\":\"" + text + "\"}\n" +
+									"	}\n" +
+									"}";
+
+				//tweetList.clear();
+				//deleteFile(FILENAME);  // TODO deprecate this button
+				//adapter.notifyDataSetChanged();
+				ElasticsearchTweetController.GetTweetsTask getTweetsTask = new ElasticsearchTweetController.GetTweetsTask();
+				getTweetsTask.execute(query);
+				try {
+					tweetList = getTweetsTask.get();
+				} catch (Exception e) {
+					Log.i("Error", "Failed to get the tweets from the asyc object");
+				}
+				adapter = new ArrayAdapter<NormalTweet>(LonelyTwitterActivity.this,
+						R.layout.list_item, tweetList);
+				oldTweetsList.setAdapter(adapter);
 			}
 		});
 
