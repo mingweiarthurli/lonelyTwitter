@@ -7,6 +7,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.io.Serializable;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Date;
@@ -71,6 +72,7 @@ public class LonelyTwitterActivity extends Activity {
 
 				Intent intent = new Intent(activity, EditTweetActivity.class);
 				startActivity(intent);
+				//intent.putExtra("tweet", (Serializable)NormalTweet);
 
 			}
 		});

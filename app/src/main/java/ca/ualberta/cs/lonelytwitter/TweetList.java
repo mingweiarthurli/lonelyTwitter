@@ -13,9 +13,7 @@ public class TweetList {
         return tweets.get(index);
     }
 
-    public boolean hasTweet(Tweet tweet){
-        return tweets.contains(tweet);
-    }
+    public boolean hasTweet(Tweet tweet){return tweets.contains(tweet);}
 
     public void add(Tweet tweet) {
         tweets.add(tweet);
