@@ -8,6 +8,8 @@ import com.robotium.solo.Solo;
 
 import junit.framework.TestCase;
 
+import java.util.ArrayList;
+
 public class LonelyTwitterActivityTest extends ActivityInstrumentationTestCase2<LonelyTwitterActivity> {
     private Solo solo;
 
@@ -46,10 +48,11 @@ public class LonelyTwitterActivityTest extends ActivityInstrumentationTestCase2<
         solo.enterText((EditText) solo.getView(R.id.body), "Test View!");
         solo.clickOnButton("Save");
         solo.enterText((EditText) solo.getView(R.id.body), "");
-        solo.waitForText("Test Tweet!");
+//        solo.waitForText("Test Tweet!"); // this will force to wait, since there is no "Test Tweet!"
 
         solo.clickInList(0);
         solo.assertCurrentActivity("Wrong Activity", EditTweetActivity.class);
+        assertTrue(solo.waitForText("Test View!"));
     }
 
     /**

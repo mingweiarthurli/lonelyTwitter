@@ -71,8 +71,14 @@ public class LonelyTwitterActivity extends Activity {
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
 				Intent intent = new Intent(activity, EditTweetActivity.class);
+				NormalTweet thistweet = (NormalTweet) tweetList.get(position);
+//				intent.putExtra("tweet", (Serializable) thistweet);x
+
+				Bundle bundle = new Bundle();
+				bundle.putSerializable("tweet", (Serializable) thistweet);
+				intent.putExtras(bundle);
+
 				startActivity(intent);
-				//intent.putExtra("tweet", (Serializable)NormalTweet);
 
 			}
 		});
