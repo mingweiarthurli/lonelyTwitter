@@ -27,7 +27,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 public class LonelyTwitterActivity extends Activity {
-	private LonelyTwitterActivity activity = this;
+	private final LonelyTwitterActivity activity = this; // add final since declaration can have final modifier
 
 	private static final String FILENAME = "file.sav";
 	private EditText bodyText;
